@@ -1,0 +1,866 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android,retrofit," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="开始使用 retrofit本身是对网络请求的再封装,所以需要其它网络请求库的支持比如Okhttpconverter-gson是json的转换器  在app的build.gradle下添加依赖: 123compile &apos;com.squareup.okhttp3:okhttp:3.8.1&apos;compile &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;compile &apos;c">
+<meta name="keywords" content="android,retrofit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retorfit菜鸟使用入门">
+<meta property="og:url" content="http://yoursite.com/2017/08/09/retroift/index.html">
+<meta property="og:site_name" content="二松同学">
+<meta property="og:description" content="开始使用 retrofit本身是对网络请求的再封装,所以需要其它网络请求库的支持比如Okhttpconverter-gson是json的转换器  在app的build.gradle下添加依赖: 123compile &apos;com.squareup.okhttp3:okhttp:3.8.1&apos;compile &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;compile &apos;c">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-09T09:03:32.061Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retorfit菜鸟使用入门">
+<meta name="twitter:description" content="开始使用 retrofit本身是对网络请求的再封装,所以需要其它网络请求库的支持比如Okhttpconverter-gson是json的转换器  在app的build.gradle下添加依赖: 123compile &apos;com.squareup.okhttp3:okhttp:3.8.1&apos;compile &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;compile &apos;c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/09/retroift/"/>
+
+
+
+
+
+  <title> Retorfit菜鸟使用入门 | 二松同学 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2ee320cd924422c87693d8d6234f7b92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">二松同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">拥有梦想只是一种智力，实现梦想才是一种能力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/09/retroift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二松同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Retorfit菜鸟使用入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-09T17:01:56+08:00">
+                2017-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><blockquote>
+<p>retrofit本身是对网络请求的再封装,所以需要其它网络请求库的支持比如Okhttp<br>converter-gson是json的转换器</p>
+</blockquote>
+<p>在app的build.gradle下添加依赖:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.okhttp3:okhttp:3.8.1'</span></div><div class="line">compile <span class="string">'com.squareup.retrofit2:retrofit:2.3.0'</span></div><div class="line">compile <span class="string">'com.squareup.retrofit2:converter-gson:2.3.0'</span></div></pre></td></tr></table></figure>
+<h2 id="初始化Retrofit"><a href="#初始化Retrofit" class="headerlink" title="初始化Retrofit"></a>初始化Retrofit</h2><blockquote>
+<p>新建Retrofit网络请求客户端,并进行配置<br>深度的配置可以传入OkhttpClient后面会提到部分</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</div><div class="line">            .baseUrl(<span class="string">"url"</span>)<span class="comment">//服务器地址</span></div><div class="line">            .addConverterFactory(GsonConverterFactory.create())<span class="comment">//json转换器,可以自定义</span></div><div class="line">            .build();</div></pre></td></tr></table></figure>
+<h2 id="创建Get请求"><a href="#创建Get请求" class="headerlink" title="创建Get请求"></a>创建Get请求</h2><blockquote>
+<p>Retrofit的请求都是通过创建接口,并通过方法上的注解获取需要的参数</p>
+<p>@GET表示get请求方式,()内可以传入接口地址</p>
+<p>@Query后接get请求的参数,将会拼接到地址后</p>
+<p>@QueryMap后接一个map,map存放参数,适合参数较多的情况</p>
+<p>Call是网络请求的操作对象,泛型指定了返回的数据类型</p>
+</blockquote>
+<ol>
+<li><p>创建请求接口  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DemoApi</span> </span>&#123;	</div><div class="line"><span class="meta">@GET</span>(<span class="string">"url"</span>)</div><div class="line"><span class="function">Call&lt;ResponseBody&gt; <span class="title">get1</span><span class="params">(@Query(<span class="string">"var1"</span>)</span> String var1,@<span class="title">Query</span><span class="params">(<span class="string">"var2"</span>)</span> String var2)</span>;</div><div class="line"></div><div class="line"><span class="meta">@GET</span>(<span class="string">"url"</span>)</div><div class="line"><span class="function">Call&lt;ResponseBody&gt; <span class="title">get2</span><span class="params">(@QueryMap Map&lt;String, String&gt; vars)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>生成接口,获得Call对象</p>
+<blockquote>
+<p>如果不想传递某个参数,参数值为null即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">DemoApi demoApi = retrofit.create(DemoApi.class);</div><div class="line"><span class="comment">//@Query</span></div><div class="line">Call&lt;ResponseBody&gt; call = demoApi.get1(<span class="string">"var1"</span>,<span class="string">"var2"</span>);</div><div class="line"><span class="comment">//@QueryMap</span></div><div class="line">Map&lt;String, String&gt; vars = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">vars.put(<span class="string">"var1"</span>,<span class="string">"var1"</span>);</div><div class="line">vars.put(<span class="string">"var2"</span>,<span class="string">"var2"</span>);</div><div class="line">Call&lt;ResponseBody&gt; call = demoApi.get2(vars);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="创建post请求"><a href="#创建post请求" class="headerlink" title="创建post请求"></a>创建post请求</h2><blockquote>
+<p>@POST代表这个方法是post请求</p>
+<p>@FormUrlEncoded表示将表单内的数据处理为键值对</p>
+<p>@Field后接需要传递的参数</p>
+<p>@FieldMap适用于参数较多的情况,可以放参数放到一个map中</p>
+</blockquote>
+<ol>
+<li><p>创建请求接口  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DemoApi</span> </span>&#123;	</div><div class="line"><span class="meta">@FormUrlEncoded</span></div><div class="line"><span class="meta">@POST</span>(<span class="string">"url"</span>)</div><div class="line"><span class="function">Call&lt;ResponseBody&gt; <span class="title">post1</span><span class="params">(@Field(<span class="string">"var1"</span>)</span> String var1,@<span class="title">Field</span><span class="params">(<span class="string">"var2"</span>)</span> String var2)</span>;</div><div class="line">&#125;</div><div class="line">  </div><div class="line"><span class="meta">@FormUrlEncoded</span></div><div class="line"><span class="meta">@POST</span>(<span class="string">"url"</span>)</div><div class="line"><span class="function">Call&lt;ResponseBody&gt; <span class="title">post2</span><span class="params">(@FieldMap Map&lt;String, String&gt; vars)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>生成接口,获得Call对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">DemoApi demoApi = retrofit.create(DemoApi.class);</div><div class="line"><span class="comment">//@Field</span></div><div class="line">Call&lt;ResponseBody&gt; call = demoApi.post1(<span class="string">"var1"</span>,<span class="string">"var2"</span>);</div><div class="line"><span class="comment">//@FieldMap</span></div><div class="line">Map&lt;String, String&gt; vars = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">vars.put(<span class="string">"var1"</span>,<span class="string">"var1"</span>);</div><div class="line">vars.put(<span class="string">"var2"</span>,<span class="string">"var2"</span>);</div><div class="line">Call&lt;ResponseBody&gt; call = demoApi.post2(vars);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="如何请求"><a href="#如何请求" class="headerlink" title="如何请求"></a>如何请求</h2><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><ol>
+<li><p>同步请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Response&lt;ResponseBody&gt; response = call.execute();</div></pre></td></tr></table></figure>
+</li>
+<li><p>异步请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response)</span> </span>&#123;</div><div class="line">              	<span class="comment">//请求成功</span></div><div class="line">              	<span class="comment">//响应码 response.code()在[200..300)区间内</span></div><div class="line">                <span class="keyword">if</span> (response.isSuccessful()) &#123;</div><div class="line">                  	<span class="comment">//数据只能读取一次</span></div><div class="line">                    Log.e(TAG, <span class="string">"onResponse: "</span> + response.body().string());</div><div class="line">                  	<span class="comment">//第二次打印为空</span></div><div class="line">                   	Log.e(TAG, <span class="string">"onResponse: "</span> + response.body().string());</div><div class="line">                  	<span class="comment">//记得关闭回收资源</span></div><div class="line">                  	response.body().close();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;ResponseBody&gt; call, Throwable t)</span> </span>&#123;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>每个请求对象只能请求一次,但是我们可以利用方法复制一份再请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Call&lt;ResponseBody&gt; clone = call.clone();</div><div class="line">clone.execute();</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<h3 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//请求是否已经取消</span></div><div class="line">call.isCanceled();</div><div class="line"><span class="comment">//请求是否已近完成</span></div><div class="line">call.isExecuted();</div><div class="line"><span class="comment">//取消请求</span></div><div class="line">call.cancel();</div></pre></td></tr></table></figure>
+<p>:warning:注意:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response)</span> </span>&#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;ResponseBody&gt; call, Throwable t)</span> </span>&#123;</div><div class="line">              <span class="comment">//取消请求,会调用该方法</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<h2 id="其它注解"><a href="#其它注解" class="headerlink" title="其它注解"></a>其它注解</h2><blockquote>
+<p>辅助作用,适用于post,get,可以混合使用</p>
+</blockquote>
+<h3 id="Body"><a href="#Body" class="headerlink" title="@Body"></a>@Body</h3><blockquote>
+<p>可以把参数封装成为一个对象,请求的时候传一个对象就可以了</p>
+<p>注意不能可@FormUrlEncoded同时使用</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@POST</span>(<span class="string">"url"</span>)</div><div class="line"><span class="function">Call&lt;String&gt; <span class="title">post</span><span class="params">(@Body Bean bean)</span></span>;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Reviews</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String var1;</div><div class="line">    <span class="keyword">public</span> String var2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Path"><a href="#Path" class="headerlink" title="@Path"></a>@Path</h3><blockquote>
+<p>根据传递的参数动态改变相对地址,例如分页,分类等</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GET</span>(<span class="string">"list/&#123;page&#125;"</span>)</div><div class="line"><span class="function">Call&lt;BookResponse&gt; <span class="title">getBook</span><span class="params">(@Path(<span class="string">"page"</span>)</span> String page)</span>;</div></pre></td></tr></table></figure>
+<h3 id="Url"><a href="#Url" class="headerlink" title="@Url"></a>@Url</h3><blockquote>
+<p>当我们的地址和basUrl没有关系的时候,可以传递一个完整的地址</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GET</span></div><div class="line"><span class="function"><span class="keyword">public</span> Call&lt;ResponseBody&gt; <span class="title">get</span><span class="params">(@Url String url)</span></span>;</div></pre></td></tr></table></figure>
+<h3 id="Headers"><a href="#Headers" class="headerlink" title="@Headers"></a>@Headers</h3><blockquote>
+<p>给请求添加请求头</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Headers</span>(&#123;	<span class="string">"Accept: application/vnd.yourapi.v1.full+json"</span>,</div><div class="line">        	<span class="string">"User-Agent: Your-App-Name"</span> &#125;)</div><div class="line"> <span class="meta">@GET</span>(<span class="string">"url"</span>)</div><div class="line"><span class="function">Call&lt;BookSearchResponse&gt; <span class="title">getSearchBooks</span><span class="params">(@Query(<span class="string">"var"</span>)</span> String var)</span>;</div></pre></td></tr></table></figure>
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><ol>
+<li><p>单张图片上传</p>
+<blockquote>
+<p>@Multipart表示表单上传数据</p>
+<p>@Part后接参数</p>
+</blockquote>
+<ul>
+<li>请求接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Multipart</span></div><div class="line"><span class="meta">@POST</span>(url)</div><div class="line"><span class="function">Call&lt;ResponseBody&gt; <span class="title">upload</span><span class="params">(@Part MultipartBody.Part img)</span></span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>创建参数和请求</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"xxx.jpg"</span>);</div><div class="line"><span class="comment">//构造请求体</span></div><div class="line">RequestBody requestBody = RequestBody.create(MediaType.parse(<span class="string">"multipart/form-data"</span>), file);</div><div class="line">MultipartBody.Part part = MultipartBody.Part.createFormData(<span class="string">"img"</span>, file.getName(), requestBody);</div><div class="line"></div><div class="line">UploadApi uploadApi = retrofit.create(UploadApi.class);</div><div class="line">Call call = uploadApi.upload( part);</div></pre></td></tr></table></figure>
+</li>
+<li><p>多图以及文字上传</p>
+<ul>
+<li>请求接口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Multipart</div><div class="line">@POST(url)</div><div class="line">Call&lt;ResponseBody&gt; upload(@Part() List&lt;MultipartBody.Part&gt; imgs,@Part String var);</div></pre></td></tr></table></figure>
+<ul>
+<li>创建参数和请求</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">List&lt;MultipartBody.Part&gt; parts = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">File file1 = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"1.jpg"</span>);</div><div class="line">File file2 = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"2.jpg"</span>);</div><div class="line"><span class="comment">//构造请求体</span></div><div class="line">RequestBody requestBody1 = RequestBody.create(MediaType.parse(<span class="string">"multipart/form-data"</span>), file1);</div><div class="line">MultipartBody.Part part1 = MultipartBody.Part.createFormData(<span class="string">"img1"</span>, file1.getName(), requestBody1);</div><div class="line"></div><div class="line">RequestBody requestBody2 = RequestBody.create(MediaType.parse(<span class="string">"multipart/form-data"</span>), file2);</div><div class="line">MultipartBody.Part part2 = MultipartBody.Part.createFormData(<span class="string">"img2"</span>, file2.getName(), requestBody2);</div><div class="line"></div><div class="line">parts.add(part1);</div><div class="line">parts.add(part2);</div><div class="line"></div><div class="line">UploadApi uploadApi = retrofit.create(UploadApi.class);</div><div class="line">Call call = uploadApi.upload(parts,<span class="string">"var"</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="强大的拦截器"><a href="#强大的拦截器" class="headerlink" title="强大的拦截器"></a>强大的拦截器</h2><blockquote>
+<p>拦截器其实是okhttp的扩展用法,所以拦截器都是给okhttpClien添加,然后把okhttpClient设置到retrofit</p>
+</blockquote>
+<h3 id="日志拦截器"><a href="#日志拦截器" class="headerlink" title="日志拦截器"></a>日志拦截器</h3><blockquote>
+<p>官方提供了一个打印日志的库</p>
+</blockquote>
+<ol>
+<li><p>添加依赖</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.squareup.okhttp3:logging-interceptor:3.8.1'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>创建</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HttpLoggingInterceptor logging = <span class="keyword">new</span> HttpLoggingInterceptor();</div><div class="line">logging.setLevel(HttpLoggingInterceptor.Level.BODY);</div><div class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder()</div><div class="line">	.addInterceptor(logging)</div><div class="line">	.addInterceptor(<span class="keyword">new</span> CustomerInterceptor())</div><div class="line">	.build();</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">retrofit = <span class="keyword">new</span> Retrofit.Builder()</div><div class="line">               .baseUrl(<span class="string">"url"</span>)</div><div class="line">               .addConverterFactory(GsonConverterFactory.create())</div><div class="line">               .client(client)</div><div class="line">               .build();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="自定义拦截器-添加统一参数"><a href="#自定义拦截器-添加统一参数" class="headerlink" title="自定义拦截器,添加统一参数"></a>自定义拦截器,添加统一参数</h3><blockquote>
+<p>自定义接口都是继承Retrofit的拦截器类然后自己改写</p>
+<p>下面这个就是继承拦截器然后获取请求,在请求的基础上复制一个请求,给请求添加统一的参数</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        Request request = chain.request();</div><div class="line">        HttpUrl httpUrl = request.url().newBuilder()</div><div class="line">                .addQueryParameter(<span class="string">"token"</span>, <span class="string">"xxxx-xxx-xxx-xxx"</span>)</div><div class="line">                .addQueryParameter(<span class="string">"deviceType"</span>,<span class="string">"android"</span>)</div><div class="line">                .build();</div><div class="line">        request = request.newBuilder().url(httpUrl).build();</div><div class="line">        <span class="keyword">return</span> chain.proceed(request);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">client.addInterceptor(<span class="keyword">new</span> CustomerInterceptor())</div></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这一次只是初步的记录了retrofit的简单使用,欢迎大家吐槽.</p>
+<p>下一步应该了解如何与Rxjava的结合使用(没办法,现在你说你不会这两个都会感觉不好意思).</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://duanyytop.github.io/2016/08/06/Retrofit%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/?utm_source=tuicool&amp;utm_medium=referral" title="Retrofit用法详解" target="_blank" rel="external">http://duanyytop.github.io/2016/08/06/Retrofit%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/?utm_source=tuicool&amp;utm_medium=referral</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/retrofit/" rel="tag"># retrofit</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/29/hello-world/" rel="next" title="hexo default">
+                <i class="fa fa-chevron-left"></i> hexo default
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="songsong" />
+          <p class="site-author-name" itemprop="name">songsong</p>
+           
+              <p class="site-description motion-element" itemprop="description">good good study day day up.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始使用"><span class="nav-number">1.</span> <span class="nav-text">开始使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Retrofit"><span class="nav-number">2.</span> <span class="nav-text">初始化Retrofit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Get请求"><span class="nav-number">3.</span> <span class="nav-text">创建Get请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建post请求"><span class="nav-number">4.</span> <span class="nav-text">创建post请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何请求"><span class="nav-number">5.</span> <span class="nav-text">如何请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发起请求"><span class="nav-number">5.1.</span> <span class="nav-text">发起请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消请求"><span class="nav-number">5.2.</span> <span class="nav-text">取消请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它注解"><span class="nav-number">6.</span> <span class="nav-text">其它注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Body"><span class="nav-number">6.1.</span> <span class="nav-text">@Body</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path"><span class="nav-number">6.2.</span> <span class="nav-text">@Path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Url"><span class="nav-number">6.3.</span> <span class="nav-text">@Url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Headers"><span class="nav-number">6.4.</span> <span class="nav-text">@Headers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传文件"><span class="nav-number">7.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强大的拦截器"><span class="nav-number">8.</span> <span class="nav-text">强大的拦截器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日志拦截器"><span class="nav-number">8.1.</span> <span class="nav-text">日志拦截器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义拦截器-添加统一参数"><span class="nav-number">8.2.</span> <span class="nav-text">自定义拦截器,添加统一参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">9.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">10.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songsong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
