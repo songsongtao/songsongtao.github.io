@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,retrofit," />
+  <meta name="keywords" content="android,android6.0," />
 
 
 
@@ -88,14 +88,14 @@
 
 
 <meta name="description" content="android每次更新真是让程序员又爱又恨啊 解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
-<meta name="keywords" content="android,retrofit">
+<meta name="keywords" content="android,android6.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="andoridM">
 <meta property="og:url" content="http://yoursite.com/2017/08/10/andoridM/index.html">
 <meta property="og:site_name" content="二松同学">
 <meta property="og:description" content="android每次更新真是让程序员又爱又恨啊 解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T08:37:58.957Z">
+<meta property="og:updated_time" content="2017-08-10T08:51:16.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="andoridM">
 <meta name="twitter:description" content="android每次更新真是让程序员又爱又恨啊 解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
@@ -390,7 +390,7 @@
 </blockquote>
 <ol>
 <li><p>危险权限</p>
-<p>| <code>权限组</code>        | 权限                                       |<br>| ———— | —————————————- |<br>| <code>CALENDAR</code>   | <code>READ_CALENDAR</code> <code>WRITE_CALENDAR</code>         |<br>| <code>CAMERA</code>     | <code>CAMERA</code>                                 |<br>| <code>CONTACTS</code>   | <code>READ_CONTACTS</code> <code>WRITE_CONTACTS</code> <code>GET_ACCOUNTS</code> |<br>| <code>LOCATION</code>   | <code>ACCESS_FINE_LOCATION</code> <code>ACCESS_COARSE_LOCATION</code> |<br>| <code>MICROPHONE</code> | <code>RECORD_AUDIO</code>                           |<br>| <code>PHONE</code>      | <code>READ_PHONE_STATE</code> <code>CALL_PHONE</code> <code>READ_CALL_LOG</code> <code>WRITE_CALL_LOG</code> <code>ADD_VOICEMAIL</code> <code>USE_SIP</code> <code>PROCESS_OUTGOING_CALLS</code> |<br>| <code>SENSORS</code>    | <code>BODY_SENSORS</code>                           |<br>| <code>SMS</code>        | <code>SEND_SMS</code> <code>RECEIVE_SMS</code> <code>READ_SMS</code> <code>RECEIVE_WAP_PUSH</code> <code>RECEIVE_MMS</code> |<br>| <code>STORAGE</code>    | <code>READ_EXTERNAL_STORAGE</code> <code>WRITE_EXTERNAL_STORAGE</code> |</p>
+<p>| 权限组        | 权限                                       |<br>| ———- | —————————————- |<br>| CALENDAR   | READ_CALENDAR  WRITE_CALENDAR            |<br>| CAMERA     | CAMERA                                   |<br>| CONTACTS   | READ_CONTACTS  WRITE_CONTACTS  GET_ACCOUNTS |<br>| LOCATION   | ACCESS_FINE_LOCATION  ACCESS_COARSE_LOCATION |<br>| MICROPHONE | RECORD_AUDIO                             |<br>| PHONE      | READ_PHONE_STATE  CALL_PHONE  READ_CALL_LOG  WRITE_CALL_LOG   ADD_VOICEMAIL  USE_SIP  PROCESS_OUTGOING_CALLS |<br>| SENSORS    | BODY_SENSORS                             |<br>| SMS        | SEND_SMS  RECEIVE_SMS  READ_SMS  RECEIVE_WAP_PUSH  RECEIVE_MMS |<br>| STORAGE    | READ_EXTERNAL_STORAGE  WRITE_EXTERNAL_STORAGE |</p>
 </li>
 <li><p>检查权限</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在需要权限的activity下</span></div><div class="line"><span class="keyword">int</span> checkSelfPermission = ContextCompat.checkSelfPermission(<span class="keyword">this</span>, Manifest.permission.READ_CONTACTS);</div><div class="line">        <span class="keyword">if</span> (checkSelfPermission == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            <span class="comment">//已经获得了权限,可以进行操作</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (checkSelfPermission == PackageManager.PERMISSION_DENIED) &#123;</div><div class="line">            <span class="comment">//不具有权限,应该申请权限</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
@@ -401,7 +401,7 @@
 <li><p>处理权限请求响应</p>
 <blockquote>
 <p>当用户响应时，系统将调用应用的 <code>onRequestPermissionsResult()</code> 方法</p>
-<p>注意权限都是安组分类的,申请和获取也是一组的(对于用户来说)</p>
+<p>注意权限都是按组分类的,申请和获取也是一组的(对于用户来说)</p>
 <p>例如，假设您在应用清单中列出了 <code>READ_CONTACTS</code> 和 <code>WRITE_CONTACTS</code>。如果您请求 <code>READ_CONTACTS</code> 且用户授予了此权限，那么，当您请求 <code>WRITE_CONTACTS</code> 时，系统将立即授予您该权限，不会与用户交互。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,</span></span></div><div class="line"><span class="function"><span class="params">        String permissions[], <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">        <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</div><div class="line">            <span class="comment">// 如果数组为空,说明请求被取消</span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></div><div class="line">                &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">               	<span class="comment">//获取权限成功,可以进行相应操作</span></div><div class="line"></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">              	<span class="comment">//取消被取消或拒绝,无法进行操作</span></div><div class="line">              	<span class="comment">//可以进行提示</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">       <span class="comment">//其它权限的情况....</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -439,7 +439,7 @@
           
             <a href="/tags/android/" rel="tag"># android</a>
           
-            <a href="/tags/retrofit/" rel="tag"># retrofit</a>
+            <a href="/tags/android6-0/" rel="tag"># android6.0</a>
           
         </div>
       
@@ -554,7 +554,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
