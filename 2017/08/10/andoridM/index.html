@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="android每次更新真是让程序员又爱又恨啊 解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
+<meta name="description" content="android每次更新真是让程序员又爱又恨啊  解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
 <meta name="keywords" content="android,android6.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="andoridM">
 <meta property="og:url" content="http://yoursite.com/2017/08/10/andoridM/index.html">
 <meta property="og:site_name" content="二松同学">
-<meta property="og:description" content="android每次更新真是让程序员又爱又恨啊 解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
+<meta property="og:description" content="android每次更新真是让程序员又爱又恨啊  解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T08:51:16.283Z">
+<meta property="og:updated_time" content="2017-08-10T09:45:49.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="andoridM">
-<meta name="twitter:description" content="android每次更新真是让程序员又爱又恨啊 解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
+<meta name="twitter:description" content="android每次更新真是让程序员又爱又恨啊  解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
 
 
 
@@ -375,8 +375,8 @@
       
 
       
-        <blockquote>
-<p>android每次更新真是让程序员又爱又恨啊</p>
+        <p>android每次更新真是让程序员又爱又恨啊</p>
+<blockquote>
 <p>解决6.0权限应该是Android的基础知识了</p>
 </blockquote>
 <h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>修改target版本号</p>
@@ -389,9 +389,55 @@
 <p>google大哥说了算的官方解决办法,推荐</p>
 </blockquote>
 <ol>
-<li><p>危险权限</p>
-<p>| 权限组        | 权限                                       |<br>| ———- | —————————————- |<br>| CALENDAR   | READ_CALENDAR  WRITE_CALENDAR            |<br>| CAMERA     | CAMERA                                   |<br>| CONTACTS   | READ_CONTACTS  WRITE_CONTACTS  GET_ACCOUNTS |<br>| LOCATION   | ACCESS_FINE_LOCATION  ACCESS_COARSE_LOCATION |<br>| MICROPHONE | RECORD_AUDIO                             |<br>| PHONE      | READ_PHONE_STATE  CALL_PHONE  READ_CALL_LOG  WRITE_CALL_LOG   ADD_VOICEMAIL  USE_SIP  PROCESS_OUTGOING_CALLS |<br>| SENSORS    | BODY_SENSORS                             |<br>| SMS        | SEND_SMS  RECEIVE_SMS  READ_SMS  RECEIVE_WAP_PUSH  RECEIVE_MMS |<br>| STORAGE    | READ_EXTERNAL_STORAGE  WRITE_EXTERNAL_STORAGE |</p>
-</li>
+<li>危险权限</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">权限组</th>
+<th style="text-align:left">权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CALENDAR</td>
+<td style="text-align:left">READ_CALENDAR, WRITE_CALENDAR</td>
+</tr>
+<tr>
+<td style="text-align:left">CAMERA</td>
+<td style="text-align:left">CAMERA</td>
+</tr>
+<tr>
+<td style="text-align:left">CONTACTS</td>
+<td style="text-align:left">READ_CONTACTS, WRITE_CONTACTS, GET_ACCOUNTS</td>
+</tr>
+<tr>
+<td style="text-align:left">LOCATION</td>
+<td style="text-align:left">ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION</td>
+</tr>
+<tr>
+<td style="text-align:left">MICROPHONE</td>
+<td style="text-align:left">RECORD_AUDIO</td>
+</tr>
+<tr>
+<td style="text-align:left">PHONE</td>
+<td style="text-align:left">READ_PHONE_STATE, CALL_PHONE, READ_CALL_LOG, WRITE_CALL_LOG, ADD_VOICEMAIL,  USE_SIP, PROCESS_OUTGOING_CALLS</td>
+</tr>
+<tr>
+<td style="text-align:left">SENSORS</td>
+<td style="text-align:left">BODY_SENSORS</td>
+</tr>
+<tr>
+<td style="text-align:left">SMS</td>
+<td style="text-align:left">SEND_SMS, RECEIVE_SMS, READ_SMS, RECEIVE_WAP_PUSH, RECEIVE_MMS</td>
+</tr>
+<tr>
+<td style="text-align:left">STORAGE</td>
+<td style="text-align:left">READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE</td>
+</tr>
+</tbody>
+</table>
+<ol>
 <li><p>检查权限</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在需要权限的activity下</span></div><div class="line"><span class="keyword">int</span> checkSelfPermission = ContextCompat.checkSelfPermission(<span class="keyword">this</span>, Manifest.permission.READ_CONTACTS);</div><div class="line">        <span class="keyword">if</span> (checkSelfPermission == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            <span class="comment">//已经获得了权限,可以进行操作</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (checkSelfPermission == PackageManager.PERMISSION_DENIED) &#123;</div><div class="line">            <span class="comment">//不具有权限,应该申请权限</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
 </li>
