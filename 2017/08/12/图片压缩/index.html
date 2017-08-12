@@ -1,0 +1,780 @@
+<!doctype html>
+
+
+
+  
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android,图片处理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="图片压缩是开发绕不过去的一道坎,曾经的我也是拿来就用 为了更好的开发,有必要了解些图片压缩的基本知识了  前言当我们在本地显示图片时,我们会把图片加载到内存.内存大大小是图片的宽高和图片的质量决定的,所以我们需要限制图片的尺寸大小 (尺寸压缩). 当向服务器上传图片时我们要限制图片的文件大小(质量压缩). 结合实际情况两者配合使用.  尺寸压缩:计算好压缩比例,加载指定宽高的图片到内存 质量压缩">
+<meta name="keywords" content="android,图片处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bitmapUtil">
+<meta property="og:url" content="http://yoursite.com/2017/08/12/图片压缩/index.html">
+<meta property="og:site_name" content="二松同学">
+<meta property="og:description" content="图片压缩是开发绕不过去的一道坎,曾经的我也是拿来就用 为了更好的开发,有必要了解些图片压缩的基本知识了  前言当我们在本地显示图片时,我们会把图片加载到内存.内存大大小是图片的宽高和图片的质量决定的,所以我们需要限制图片的尺寸大小 (尺寸压缩). 当向服务器上传图片时我们要限制图片的文件大小(质量压缩). 结合实际情况两者配合使用.  尺寸压缩:计算好压缩比例,加载指定宽高的图片到内存 质量压缩">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-12T08:33:40.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bitmapUtil">
+<meta name="twitter:description" content="图片压缩是开发绕不过去的一道坎,曾经的我也是拿来就用 为了更好的开发,有必要了解些图片压缩的基本知识了  前言当我们在本地显示图片时,我们会把图片加载到内存.内存大大小是图片的宽高和图片的质量决定的,所以我们需要限制图片的尺寸大小 (尺寸压缩). 当向服务器上传图片时我们要限制图片的文件大小(质量压缩). 结合实际情况两者配合使用.  尺寸压缩:计算好压缩比例,加载指定宽高的图片到内存 质量压缩">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/12/图片压缩/"/>
+
+
+
+
+
+  <title> bitmapUtil | 二松同学 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2ee320cd924422c87693d8d6234f7b92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">二松同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">拥有梦想只是一种智力，实现梦想才是一种能力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/12/图片压缩/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二松同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                bitmapUtil
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-12T16:31:23+08:00">
+                2017-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>图片压缩是开发绕不过去的一道坎,曾经的我也是拿来就用</p>
+<p>为了更好的开发,有必要了解些图片压缩的基本知识了</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当我们在本地显示图片时,我们会把图片加载到内存.内存大大小是图片的宽高和图片的质量决定的,所以我们需要限制图片的尺寸大小 (尺寸压缩).</p>
+<p>当向服务器上传图片时我们要限制图片的文件大小(质量压缩).</p>
+<p>结合实际情况两者配合使用.</p>
+<ul>
+<li>尺寸压缩:计算好压缩比例,加载指定宽高的图片到内存</li>
+<li>质量压缩:把数据读取到内存压缩图片的质量</li>
+</ul>
+<h2 id="尺寸压缩"><a href="#尺寸压缩" class="headerlink" title="尺寸压缩"></a>尺寸压缩</h2><blockquote>
+<p><code>BitmapFactory.Options</code>:控制图片加载的策略</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//压缩图片到指定宽高</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">getSmallBitmap</span><span class="params">(String filePath, <span class="keyword">int</span> reqWidth, <span class="keyword">int</span> reqHeight)</span> </span>&#123; </div><div class="line">	BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">		<span class="comment">//是否把图片解码到内存,true不解码到内存</span></div><div class="line">        options.inJustDecodeBounds = <span class="keyword">true</span>;</div><div class="line">        BitmapFactory.decodeFile(filePath, options);</div><div class="line">		<span class="comment">//计算压缩比例</span></div><div class="line">        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);</div><div class="line">		<span class="comment">//算好比例后加载压缩到指定尺寸的图片</span></div><div class="line">        options.inJustDecodeBounds = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> BitmapFactory.decodeFile(filePath, options);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>options.inSampleSize</code>压缩图片的程度,压缩后的图片大小=原大小/<code>inSampleSize</code></p>
+<p><code>options.inSampleSize</code>会默认取离2的倍数的最近的数值</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//计算压缩到指定宽高的压缩比例</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateInSampleSize</span><span class="params">(BitmapFactory.Options options, <span class="keyword">int</span> reqWidth, <span class="keyword">int</span> reqHeight)</span> </span>&#123;</div><div class="line">  		<span class="comment">//获得bitmap的宽高</span></div><div class="line">        <span class="keyword">int</span> h = options.outHeight;</div><div class="line">        <span class="keyword">int</span> w = options.outWidth;</div><div class="line">        <span class="keyword">int</span> inSampleSize = <span class="number">0</span>;</div><div class="line">  		<span class="comment">//如果大于指定宽高,压缩</span></div><div class="line">        <span class="keyword">if</span> (h &gt; reqHeight || w &gt; reqWidth) &#123;</div><div class="line">            <span class="keyword">float</span> ratioW = (<span class="keyword">float</span>) w / reqWidth;</div><div class="line">            <span class="keyword">float</span> ratioH = (<span class="keyword">float</span>) h / reqHeight;</div><div class="line">          	<span class="comment">//取小的压缩比例,防止图片压缩的太厉害</span></div><div class="line">            inSampleSize = (<span class="keyword">int</span>) Math.min(ratioH, ratioW);</div><div class="line">        &#125;</div><div class="line">        inSampleSize = Math.max(<span class="number">1</span>, inSampleSize);</div><div class="line">        <span class="keyword">return</span> inSampleSize;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="质量压缩"><a href="#质量压缩" class="headerlink" title="质量压缩"></a>质量压缩</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] compressBitmapToBytes(String filePath, <span class="keyword">int</span> reqWidth, <span class="keyword">int</span> reqHeight, <span class="keyword">int</span> quality) &#123;</div><div class="line">  		<span class="comment">//先尺寸压缩</span></div><div class="line">        Bitmap bitmap = getSmallBitmap(filePath, reqWidth, reqHeight);</div><div class="line">  		<span class="comment">//存放的直接输出流</span></div><div class="line">        ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</div><div class="line">  		<span class="comment">//压缩(图片格式,质量百分比(100最大),输出流)</span></div><div class="line">        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);</div><div class="line">        <span class="keyword">byte</span>[] bytes = baos.toByteArray();</div><div class="line">  		<span class="comment">//回收数据</span></div><div class="line">        bitmap.recycle();</div><div class="line">        Log.i(TAG, <span class="string">"Bitmap compressed success, size: "</span> + bytes.length);</div><div class="line">        <span class="keyword">return</span> bytes;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>需要注意的地方:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//得到压缩后的字节数组</span></div><div class="line"><span class="keyword">byte</span>[] bytes1 = compressBitmapToBytes();</div><div class="line"><span class="comment">//当你用获得字节数组去加载bitmap时候</span></div><div class="line">Bitmap newBItmap = BitmapFactory.decodeByteArray(bytes, <span class="number">0</span>, bytes.length);</div><div class="line">bitmap.compress(Bitmap.CompressFormat.JPEG, <span class="number">100</span>, baos);</div><div class="line"><span class="keyword">byte</span>[] bytes2 = baos.toByteArray();</div><div class="line"><span class="comment">//what?怎么加载一次就变大了?</span></div><div class="line"><span class="comment">//newBItmap和没有压缩过的图片占用的内存是一样大的</span></div><div class="line">bytes2.length &gt; bytes1.length;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>android加载图片的时候是按照照片的大小和配置来分配内存的,虽然我们的存储大小改变了,但是宽高没有变化.</p>
+<p>所以,当我们显示图片的时候压缩宽高就够了.</p>
+<p>质量压缩过的图片不应该读取成bitmap,应该转换成byte数组或是保存成文件.</p>
+</blockquote>
+<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><ul>
+<li>保存bitmap</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">saveBitmap</span><span class="params">(Bitmap bitmap, File file)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(bitmap == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            FileOutputStream fos = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                fos = <span class="keyword">new</span> FileOutputStream(file);</div><div class="line">                bitmap.compress(CompressFormat.PNG, <span class="number">100</span>, fos);</div><div class="line">                fos.flush();</div><div class="line">                <span class="keyword">boolean</span> e = <span class="keyword">true</span>;</div><div class="line">                <span class="keyword">return</span> e;</div><div class="line">            &#125; <span class="keyword">catch</span> (Exception var13) &#123;</div><div class="line">                var13.printStackTrace();</div><div class="line">            &#125; <span class="keyword">finally</span> &#123;</div><div class="line">                <span class="keyword">if</span>(fos != <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">try</span> &#123;</div><div class="line">                        fos.close();</div><div class="line">                    &#125; <span class="keyword">catch</span> (IOException var12) &#123;</div><div class="line">                        var12.printStackTrace();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>保存btye[]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">FileOutputStream outputStream = new FileOutputStream(new File(&quot;path/xx.jpg&quot;));</div><div class="line">outputStream.write(bytes);</div><div class="line">outputStream.close();</div></pre></td></tr></table></figure>
+<h2 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h2><blockquote>
+<p>图片上传是耗时操作,如果图片过大,压缩操作会阻塞线程很久,造成不好的体验</p>
+<p>可以利用AsyncTask把操作放到线程中去</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompressBitmapTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Integer</span>, <span class="title">Void</span>&gt; </span>&#123;</div><div class="line">       ProgressDialog dialog;<span class="comment">//进度条</span></div><div class="line">       <span class="keyword">private</span> List&lt;String&gt; sourcePaths;<span class="comment">//图片地址集合</span></div><div class="line">       <span class="keyword">private</span> String saveRoot;<span class="comment">//存放目录</span></div><div class="line">       <span class="keyword">private</span> Context context;</div><div class="line">       <span class="keyword">private</span> CallBack callBack;</div><div class="line">	<span class="comment">//还可以添加压缩的尺寸大小,文件大小等参数....</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="title">CompressBitmapTask</span><span class="params">(String saveRoot, Context context, List&lt;String&gt; sourcePaths, CallBack callBack)</span> </span>&#123;</div><div class="line">           <span class="keyword">this</span>.saveRoot = saveRoot;</div><div class="line">           <span class="keyword">this</span>.context = context;</div><div class="line">           <span class="keyword">this</span>.sourcePaths = sourcePaths;</div><div class="line">           <span class="keyword">this</span>.callBack = callBack;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPreExecute</span><span class="params">()</span> </span>&#123;</div><div class="line">           <span class="keyword">super</span>.onPreExecute();</div><div class="line">           dialog = ProgressDialog.show(context, <span class="keyword">null</span>, <span class="string">"压缩中..."</span>);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(Void... voids)</span> </span>&#123;</div><div class="line">           <span class="keyword">for</span> (String path : sourcePaths) &#123;</div><div class="line">               <span class="comment">//1.图片压缩</span></div><div class="line">               <span class="comment">//2.质量压缩</span></div><div class="line">               <span class="comment">//3.存放</span></div><div class="line">           &#125;</div><div class="line">           <span class="comment">//4.关闭数据流</span></div><div class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Void aVoid)</span> </span>&#123;</div><div class="line">           <span class="keyword">super</span>.onPostExecute(aVoid);</div><div class="line">           dialog.dismiss();</div><div class="line">           <span class="keyword">if</span> (callBack != <span class="keyword">null</span>) &#123;</div><div class="line">               callBack.success();</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line"><span class="comment">//回调</span></div><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CallBack</span> </span>&#123;</div><div class="line">       <span class="function"><span class="keyword">void</span> <span class="title">success</span><span class="params">()</span></span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/图片处理/" rel="tag"># 图片处理</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/10/andoridM/" rel="next" title="andoridM">
+                <i class="fa fa-chevron-left"></i> andoridM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="songsong" />
+          <p class="site-author-name" itemprop="name">songsong</p>
+           
+              <p class="site-description motion-element" itemprop="description">good good study day day up.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尺寸压缩"><span class="nav-number">2.</span> <span class="nav-text">尺寸压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#质量压缩"><span class="nav-number">3.</span> <span class="nav-text">质量压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存图片"><span class="nav-number">4.</span> <span class="nav-text">保存图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步处理"><span class="nav-number">5.</span> <span class="nav-text">异步处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songsong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" color="0,0,0" opacity='0.8' zIndex="-1" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+</body>
+</html>
