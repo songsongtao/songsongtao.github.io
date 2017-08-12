@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="二松同学">
 <meta property="og:description" content="android每次更新真是让程序员又爱又恨啊  解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T09:45:49.166Z">
+<meta property="og:updated_time" content="2017-08-12T08:53:23.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="andoridM">
 <meta name="twitter:description" content="android每次更新真是让程序员又爱又恨啊  解决6.0权限应该是Android的基础知识了  方法1修改target版本号  这种方法适用于爱偷懒的同学和和部分不重要的项目建议还是使用官方的  123456defaultConfig &amp;#123;    	...	//修改至23(android6.0)之前的版本号       targetSdkVersion 22	...   &amp;#125; 这">
@@ -451,6 +451,9 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,</span></span></div><div class="line"><span class="function"><span class="params">        String permissions[], <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">        <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</div><div class="line">            <span class="comment">// 如果数组为空,说明请求被取消</span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></div><div class="line">                &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">               	<span class="comment">//获取权限成功,可以进行相应操作</span></div><div class="line"></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">              	<span class="comment">//取消被取消或拒绝,无法进行操作</span></div><div class="line">              	<span class="comment">//可以进行提示</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">       <span class="comment">//其它权限的情况....</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>其实权限的申请和处理很简单,但是流程太长了,个人觉得有必要封装一下.</p>
+<p>​</p>
+<p>封装好的代码:</p>
+<p><a href="https://github.com/songsongtao/study_code" target="_blank" rel="external">https://github.com/songsongtao/study_code</a></p>
 </li>
 </ol>
 
