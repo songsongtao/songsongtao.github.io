@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,dialog," />
+  <meta name="keywords" content="android,shape," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="系统封装好的进度条弹窗  基本使用123456789ProgressDialog progressDialog = new ProgressDialog(this);        progressDialog.setTitle(&quot;标题&quot;);//标题        progressDialog.setIcon(R.mipmap.ic_launcher);//标题左侧图标        progr">
-<meta name="keywords" content="android,dialog">
+<meta name="description" content="自定义view，利用Drawable类给View设置背景，不用再去写一大堆shape、selector.xml文件了  1. 定义属性123456789101112&amp;lt;!--自定义View属性,背景颜色、按压颜色、边框和圆角等，可以自己扩展--&amp;gt;&amp;lt;declare-styleable name=&quot;SimpleShapeText&quot;&amp;gt;	&amp;lt;attr name=&quot;bgColor">
+<meta name="keywords" content="android,shape">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ProgressDialog">
-<meta property="og:url" content="http://yoursite.com/2017/08/14/ProgressDialog/index.html">
+<meta property="og:title" content="简单自定义View让圆角和边框更方便">
+<meta property="og:url" content="http://yoursite.com/2017/10/12/SimpleShape/index.html">
 <meta property="og:site_name" content="二松同学">
-<meta property="og:description" content="系统封装好的进度条弹窗  基本使用123456789ProgressDialog progressDialog = new ProgressDialog(this);        progressDialog.setTitle(&quot;标题&quot;);//标题        progressDialog.setIcon(R.mipmap.ic_launcher);//标题左侧图标        progr">
+<meta property="og:description" content="自定义view，利用Drawable类给View设置背景，不用再去写一大堆shape、selector.xml文件了  1. 定义属性123456789101112&amp;lt;!--自定义View属性,背景颜色、按压颜色、边框和圆角等，可以自己扩展--&amp;gt;&amp;lt;declare-styleable name=&quot;SimpleShapeText&quot;&amp;gt;	&amp;lt;attr name=&quot;bgColor">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-14T03:56:06.711Z">
+<meta property="og:updated_time" content="2017-10-13T01:21:45.364Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProgressDialog">
-<meta name="twitter:description" content="系统封装好的进度条弹窗  基本使用123456789ProgressDialog progressDialog = new ProgressDialog(this);        progressDialog.setTitle(&quot;标题&quot;);//标题        progressDialog.setIcon(R.mipmap.ic_launcher);//标题左侧图标        progr">
+<meta name="twitter:title" content="简单自定义View让圆角和边框更方便">
+<meta name="twitter:description" content="自定义view，利用Drawable类给View设置背景，不用再去写一大堆shape、selector.xml文件了  1. 定义属性123456789101112&amp;lt;!--自定义View属性,背景颜色、按压颜色、边框和圆角等，可以自己扩展--&amp;gt;&amp;lt;declare-styleable name=&quot;SimpleShapeText&quot;&amp;gt;	&amp;lt;attr name=&quot;bgColor">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/14/ProgressDialog/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/12/SimpleShape/"/>
 
 
 
 
 
-  <title> ProgressDialog | 二松同学 </title>
+  <title> 简单自定义View让圆角和边框更方便 | 二松同学 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/ProgressDialog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/SimpleShape/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="songsong">
@@ -301,7 +301,7 @@
             
             
               
-                ProgressDialog
+                简单自定义View让圆角和边框更方便
               
             
           </h1>
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T11:50:33+08:00">
-                2017-08-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T18:13:31+08:00">
+                2017-10-12
               </time>
             
 
@@ -357,9 +357,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/14/ProgressDialog/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/12/SimpleShape/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/14/ProgressDialog/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/12/SimpleShape/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,39 +386,12 @@
 
       
         <blockquote>
-<p>系统封装好的进度条弹窗</p>
+<p>自定义view，利用Drawable类给View设置背景，不用再去写一大堆shape、selector.xml文件了</p>
 </blockquote>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(<span class="keyword">this</span>);</div><div class="line">        progressDialog.setTitle(<span class="string">"标题"</span>);<span class="comment">//标题</span></div><div class="line">        progressDialog.setIcon(R.mipmap.ic_launcher);<span class="comment">//标题左侧图标</span></div><div class="line">        progressDialog.setMessage(<span class="string">"文本"</span>);<span class="comment">//内容</span></div><div class="line">        progressDialog.setCancelable(<span class="keyword">true</span>);<span class="comment">//可以按返回键取消</span></div><div class="line">        progressDialog.setCanceledOnTouchOutside(<span class="keyword">true</span>);<span class="comment">//可以点击空白取消</span></div><div class="line">        progressDialog.setOnDismissListener(<span class="keyword">null</span>);<span class="comment">//隐藏事件</span></div><div class="line">        progressDialog.setOnCancelListener(<span class="keyword">null</span>);<span class="comment">//取消事件</span></div><div class="line">        progressDialog.show();<span class="comment">//显示</span></div></pre></td></tr></table></figure>
-<p>或者简单的写法:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ProgressDialog progressDialog = ProgressDialog.show(<span class="keyword">this</span>, <span class="string">"标题"</span>, <span class="string">"内容"</span>);</div></pre></td></tr></table></figure>
-<h2 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h2><h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);<span class="comment">//水平</span></div><div class="line">progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);<span class="comment">//环形</span></div></pre></td></tr></table></figure>
-<h3 id="水平进度条"><a href="#水平进度条" class="headerlink" title="水平进度条"></a>水平进度条</h3><ul>
-<li><p>进度</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//进度图片</span></div><div class="line">progressDialog.setProgressDrawable(getResources().getDrawable(R.mipmap.ic_launcher));</div><div class="line"><span class="comment">//最大进度</span></div><div class="line">progressDialog.setMax(<span class="number">120</span>);</div><div class="line">progressDialog.getMax();</div><div class="line"><span class="comment">//设置进度,在show()之后调用</span></div><div class="line">progressDialog.setProgress(<span class="number">50</span>);<span class="comment">//设置的是max的多少份</span></div><div class="line">progressDialog.getProgress();</div><div class="line"><span class="comment">//50/120=42%</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>次要进度</p>
-<blockquote>
-<p>比如下载或者视频的缓存</p>
-<p>颜色比进度要浅一点</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">progressDialog.setSecondaryProgress(<span class="number">80</span>);</div><div class="line">progressDialog.getSecondaryProgress();</div></pre></td></tr></table></figure>
-</li>
-<li><p>进度增长设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实际进度加10</span></div><div class="line">progressDialog.incrementProgressBy(<span class="number">10</span>);</div><div class="line">progressDialog.incrementSecondaryProgressBy(<span class="number">10</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>不确定状态进度条</p>
-<blockquote>
-<p>其实就不显示具体的进度,而是暂时一个加载的动画</p>
-<p>常用于一些耗时操作</p>
-<p>注意:设置进度是不起作用的,永远是0</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//开启</span></div><div class="line">progressDialog.setIndeterminate(<span class="keyword">true</span>);</div><div class="line"><span class="comment">//判断  </span></div><div class="line">progressDialog.isIndeterminate();</div><div class="line"><span class="comment">//不确定进度的图片</span></div><div class="line">progressDialog.setIndeterminateDrawable(getResources().getDrawable(R.mipmap.ic_launcher));</div></pre></td></tr></table></figure>
-</li>
-<li><p>格式化进度数字</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//%1d: 当前进度百分比</span></div><div class="line"><span class="comment">//%2d: 最大进度百分比</span></div><div class="line"><span class="comment">//设置进度比的格式 </span></div><div class="line">progressDialog.setProgressNumberFormat(<span class="string">"%1dkb/%2dkb"</span>);</div><div class="line"><span class="comment">// getCurrencyInstance 是一个货币格式化的方法</span></div><div class="line"><span class="comment">//设置进度格式</span></div><div class="line">dialog.setProgressPercentFormat(NumberFormat.getCurrencyInstance());</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
+<h3 id="1-定义属性"><a href="#1-定义属性" class="headerlink" title="1. 定义属性"></a>1. 定义属性</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--自定义View属性,背景颜色、按压颜色、边框和圆角等，可以自己扩展--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"SimpleShapeText"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"bgColor"</span> <span class="attr">format</span>=<span class="string">"color"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"pressColor"</span> <span class="attr">format</span>=<span class="string">"color"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"borderColor"</span> <span class="attr">format</span>=<span class="string">"color"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"borderWidth"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"cornerRadius"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"leftTopRadius"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"rightTopRadius"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"leftBottomRadius"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"rightBottomRadius"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="2-初始化属性"><a href="#2-初始化属性" class="headerlink" title="2. 初始化属性"></a>2. 初始化属性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SimpleShapeText);</div><div class="line">bgcolor = ta.getColor(R.styleable.SimpleShapeText_bgColor, Color.TRANSPARENT);</div><div class="line">pressColor = ta.getColor(R.styleable.SimpleShapeText_pressColor, Color.TRANSPARENT);</div><div class="line">borderColor = ta.getColor(R.styleable.SimpleShapeText_borderColor, Color.TRANSPARENT);</div><div class="line">borderWidth = ta.getDimensionPixelOffset(R.styleable.SimpleShapeText_borderWidth, <span class="number">0</span>);</div><div class="line">cornerRadius = ta.getDimensionPixelOffset(R.styleable.SimpleShapeText_cornerRadius, <span class="number">0</span>);</div><div class="line">leftTopRadius = ta.getDimensionPixelOffset(R.styleable.SimpleShapeText_leftTopRadius, <span class="number">0</span>);</div><div class="line">leftBottomRadius = ta.getDimensionPixelOffset(R.styleable.SimpleShapeText_leftBottomRadius, <span class="number">0</span>);</div><div class="line">rightTopRadius = ta.getDimensionPixelOffset(R.styleable.SimpleShapeText_rightTopRadius, <span class="number">0</span>);</div><div class="line">rightBottomRadius = ta.getDimensionPixelOffset(R.styleable.SimpleShapeText_rightBottomRadius, <span class="number">0</span>);</div><div class="line">ta.recycle();</div></pre></td></tr></table></figure>
+<h3 id="3-生成背景"><a href="#3-生成背景" class="headerlink" title="3.  生成背景"></a>3.  生成背景</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//生成背景</span></div><div class="line"><span class="function"><span class="keyword">private</span> Drawable <span class="title">createBgDrawable</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (pressColor != Color.TRANSPARENT) &#123;<span class="comment">//StateListDrawable实现按压效果</span></div><div class="line">		StateListDrawable stateListDrawable = <span class="keyword">new</span> StateListDrawable();</div><div class="line">         stateListDrawable.addState(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;android.R.attr.state_pressed&#125;, 				getDrawable(pressColor));</div><div class="line">         stateListDrawable.addState(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;&#125;, getDrawable(bgcolor));</div><div class="line">          <span class="keyword">return</span> stateListDrawable;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> getDrawable(bgcolor);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//获取drawable</span></div><div class="line"><span class="function"><span class="keyword">private</span> GradientDrawable <span class="title">getDrawable</span><span class="params">(<span class="keyword">int</span> color)</span> </span>&#123;</div><div class="line">        GradientDrawable drawable = <span class="keyword">new</span> GradientDrawable();</div><div class="line">        <span class="comment">//边框</span></div><div class="line">        <span class="keyword">if</span> (borderWidth != <span class="number">0</span> &amp;&amp; borderColor != Color.TRANSPARENT) &#123;</div><div class="line">            drawable.setStroke(borderWidth, borderColor);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//填充色</span></div><div class="line">        drawable.setColor(color);</div><div class="line">        <span class="comment">//圆角</span></div><div class="line">        <span class="keyword">if</span> (cornerRadius != <span class="number">0</span>) &#123;</div><div class="line">            drawable.setCornerRadius(cornerRadius);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            drawable.setCornerRadii(<span class="keyword">new</span> <span class="keyword">float</span>[]&#123;leftTopRadius, leftTopRadius, rightTopRadius, rightTopRadius,</div><div class="line">                    rightBottomRadius, rightBottomRadius, leftBottomRadius, leftBottomRadius&#125;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> drawable;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="4-构造方法"><a href="#4-构造方法" class="headerlink" title="4. 构造方法"></a>4. 构造方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">SimpleShapeText</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.context = context;</div><div class="line">        <span class="comment">//初始化属性</span></div><div class="line">        initCustomAttr(attrs);</div><div class="line">        <span class="comment">//设置背景</span></div><div class="line">        Drawable bgDrawable = createBgDrawable();</div><div class="line">        <span class="keyword">this</span>.setBackground(bgDrawable);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -450,7 +423,7 @@
           
             <a href="/tags/android/" rel="tag"># android</a>
           
-            <a href="/tags/dialog/" rel="tag"># dialog</a>
+            <a href="/tags/shape/" rel="tag"># shape</a>
           
         </div>
       
@@ -463,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/14/AlertDialog/" rel="next" title="AlertDialog">
-                <i class="fa fa-chevron-left"></i> AlertDialog
+              <a href="/2017/10/09/OkHttp/" rel="next" title="OkHttp快速上手">
+                <i class="fa fa-chevron-left"></i> OkHttp快速上手
               </a>
             
           </div>
@@ -473,8 +446,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/25/gradle/" rel="prev" title="gradle">
-                gradle <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/13/Gson/" rel="prev" title="Gson">
+                Gson <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -631,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进度条"><span class="nav-number">2.</span> <span class="nav-text">进度条</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样式"><span class="nav-number">2.1.</span> <span class="nav-text">样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平进度条"><span class="nav-number">2.2.</span> <span class="nav-text">水平进度条</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义属性"><span class="nav-number">1.</span> <span class="nav-text">1. 定义属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-初始化属性"><span class="nav-number">2.</span> <span class="nav-text">2. 初始化属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-生成背景"><span class="nav-number">3.</span> <span class="nav-text">3.  生成背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-构造方法"><span class="nav-number">4.</span> <span class="nav-text">4. 构造方法</span></a></li></ol></div>
             
 
           </div>
@@ -768,9 +741,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/14/ProgressDialog/';
-          this.page.identifier = '2017/08/14/ProgressDialog/';
-          this.page.title = 'ProgressDialog';
+          this.page.url = 'http://yoursite.com/2017/10/12/SimpleShape/';
+          this.page.identifier = '2017/10/12/SimpleShape/';
+          this.page.title = '简单自定义View让圆角和边框更方便';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://songsong.disqus.com/embed.js';

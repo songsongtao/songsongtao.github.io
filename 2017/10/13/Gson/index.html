@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,dialog," />
+  <meta name="keywords" content="android,json," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="系统封装好的进度条弹窗  基本使用123456789ProgressDialog progressDialog = new ProgressDialog(this);        progressDialog.setTitle(&quot;标题&quot;);//标题        progressDialog.setIcon(R.mipmap.ic_launcher);//标题左侧图标        progr">
-<meta name="keywords" content="android,dialog">
+<meta name="description" content="gson基本用法拓展  属性重命名 解析时对指定属性进行重命名为我们指定的命名  12@SerializedName(&quot;email_address&quot;)public String emailAddress; 多命名属性取值 解析时提供多个属性名进行选择，如果都出现取最后一个  12@SerializedName(value = &quot;emailAddress&quot;, alternate = &amp;#123;&quot;">
+<meta name="keywords" content="android,json">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ProgressDialog">
-<meta property="og:url" content="http://yoursite.com/2017/08/14/ProgressDialog/index.html">
+<meta property="og:title" content="Gson">
+<meta property="og:url" content="http://yoursite.com/2017/10/13/Gson/index.html">
 <meta property="og:site_name" content="二松同学">
-<meta property="og:description" content="系统封装好的进度条弹窗  基本使用123456789ProgressDialog progressDialog = new ProgressDialog(this);        progressDialog.setTitle(&quot;标题&quot;);//标题        progressDialog.setIcon(R.mipmap.ic_launcher);//标题左侧图标        progr">
+<meta property="og:description" content="gson基本用法拓展  属性重命名 解析时对指定属性进行重命名为我们指定的命名  12@SerializedName(&quot;email_address&quot;)public String emailAddress; 多命名属性取值 解析时提供多个属性名进行选择，如果都出现取最后一个  12@SerializedName(value = &quot;emailAddress&quot;, alternate = &amp;#123;&quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-14T03:56:06.711Z">
+<meta property="og:updated_time" content="2017-10-13T01:05:27.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProgressDialog">
-<meta name="twitter:description" content="系统封装好的进度条弹窗  基本使用123456789ProgressDialog progressDialog = new ProgressDialog(this);        progressDialog.setTitle(&quot;标题&quot;);//标题        progressDialog.setIcon(R.mipmap.ic_launcher);//标题左侧图标        progr">
+<meta name="twitter:title" content="Gson">
+<meta name="twitter:description" content="gson基本用法拓展  属性重命名 解析时对指定属性进行重命名为我们指定的命名  12@SerializedName(&quot;email_address&quot;)public String emailAddress; 多命名属性取值 解析时提供多个属性名进行选择，如果都出现取最后一个  12@SerializedName(value = &quot;emailAddress&quot;, alternate = &amp;#123;&quot;">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/14/ProgressDialog/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/13/Gson/"/>
 
 
 
 
 
-  <title> ProgressDialog | 二松同学 </title>
+  <title> Gson | 二松同学 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/ProgressDialog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/13/Gson/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="songsong">
@@ -301,7 +301,7 @@
             
             
               
-                ProgressDialog
+                Gson
               
             
           </h1>
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T11:50:33+08:00">
-                2017-08-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T09:02:51+08:00">
+                2017-10-13
               </time>
             
 
@@ -357,9 +357,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/14/ProgressDialog/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/13/Gson/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/14/ProgressDialog/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/13/Gson/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,39 +386,35 @@
 
       
         <blockquote>
-<p>系统封装好的进度条弹窗</p>
+<p>gson基本用法拓展</p>
 </blockquote>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(<span class="keyword">this</span>);</div><div class="line">        progressDialog.setTitle(<span class="string">"标题"</span>);<span class="comment">//标题</span></div><div class="line">        progressDialog.setIcon(R.mipmap.ic_launcher);<span class="comment">//标题左侧图标</span></div><div class="line">        progressDialog.setMessage(<span class="string">"文本"</span>);<span class="comment">//内容</span></div><div class="line">        progressDialog.setCancelable(<span class="keyword">true</span>);<span class="comment">//可以按返回键取消</span></div><div class="line">        progressDialog.setCanceledOnTouchOutside(<span class="keyword">true</span>);<span class="comment">//可以点击空白取消</span></div><div class="line">        progressDialog.setOnDismissListener(<span class="keyword">null</span>);<span class="comment">//隐藏事件</span></div><div class="line">        progressDialog.setOnCancelListener(<span class="keyword">null</span>);<span class="comment">//取消事件</span></div><div class="line">        progressDialog.show();<span class="comment">//显示</span></div></pre></td></tr></table></figure>
-<p>或者简单的写法:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ProgressDialog progressDialog = ProgressDialog.show(<span class="keyword">this</span>, <span class="string">"标题"</span>, <span class="string">"内容"</span>);</div></pre></td></tr></table></figure>
-<h2 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h2><h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);<span class="comment">//水平</span></div><div class="line">progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);<span class="comment">//环形</span></div></pre></td></tr></table></figure>
-<h3 id="水平进度条"><a href="#水平进度条" class="headerlink" title="水平进度条"></a>水平进度条</h3><ul>
-<li><p>进度</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//进度图片</span></div><div class="line">progressDialog.setProgressDrawable(getResources().getDrawable(R.mipmap.ic_launcher));</div><div class="line"><span class="comment">//最大进度</span></div><div class="line">progressDialog.setMax(<span class="number">120</span>);</div><div class="line">progressDialog.getMax();</div><div class="line"><span class="comment">//设置进度,在show()之后调用</span></div><div class="line">progressDialog.setProgress(<span class="number">50</span>);<span class="comment">//设置的是max的多少份</span></div><div class="line">progressDialog.getProgress();</div><div class="line"><span class="comment">//50/120=42%</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>次要进度</p>
-<blockquote>
-<p>比如下载或者视频的缓存</p>
-<p>颜色比进度要浅一点</p>
+<h3 id="属性重命名"><a href="#属性重命名" class="headerlink" title="属性重命名"></a>属性重命名</h3><blockquote>
+<p>解析时对指定属性进行重命名为我们指定的命名</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">progressDialog.setSecondaryProgress(<span class="number">80</span>);</div><div class="line">progressDialog.getSecondaryProgress();</div></pre></td></tr></table></figure>
-</li>
-<li><p>进度增长设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实际进度加10</span></div><div class="line">progressDialog.incrementProgressBy(<span class="number">10</span>);</div><div class="line">progressDialog.incrementSecondaryProgressBy(<span class="number">10</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>不确定状态进度条</p>
-<blockquote>
-<p>其实就不显示具体的进度,而是暂时一个加载的动画</p>
-<p>常用于一些耗时操作</p>
-<p>注意:设置进度是不起作用的,永远是0</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SerializedName</span>(<span class="string">"email_address"</span>)</div><div class="line"><span class="keyword">public</span> String emailAddress;</div></pre></td></tr></table></figure>
+<h3 id="多命名属性取值"><a href="#多命名属性取值" class="headerlink" title="多命名属性取值"></a>多命名属性取值</h3><blockquote>
+<p>解析时提供多个属性名进行选择，如果都出现取最后一个</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//开启</span></div><div class="line">progressDialog.setIndeterminate(<span class="keyword">true</span>);</div><div class="line"><span class="comment">//判断  </span></div><div class="line">progressDialog.isIndeterminate();</div><div class="line"><span class="comment">//不确定进度的图片</span></div><div class="line">progressDialog.setIndeterminateDrawable(getResources().getDrawable(R.mipmap.ic_launcher));</div></pre></td></tr></table></figure>
-</li>
-<li><p>格式化进度数字</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//%1d: 当前进度百分比</span></div><div class="line"><span class="comment">//%2d: 最大进度百分比</span></div><div class="line"><span class="comment">//设置进度比的格式 </span></div><div class="line">progressDialog.setProgressNumberFormat(<span class="string">"%1dkb/%2dkb"</span>);</div><div class="line"><span class="comment">// getCurrencyInstance 是一个货币格式化的方法</span></div><div class="line"><span class="comment">//设置进度格式</span></div><div class="line">dialog.setProgressPercentFormat(NumberFormat.getCurrencyInstance());</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SerializedName</span>(value = <span class="string">"emailAddress"</span>, alternate = &#123;<span class="string">"email"</span>, <span class="string">"email_address"</span>&#125;)</div><div class="line"><span class="keyword">public</span> String emailAddress;</div></pre></td></tr></table></figure>
+<h3 id="解析数组"><a href="#解析数组" class="headerlink" title="解析数组"></a>解析数组</h3><ol>
+<li>使用数组</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Gson gson = <span class="keyword">new</span> Gson();</div><div class="line">String jsonArray = <span class="string">"[\"Android\",\"Java\",\"PHP\"]"</span>;</div><div class="line">String[] strings = gson.fromJson(jsonArray, String[].class);</div></pre></td></tr></table></figure>
+<ol>
+<li>使用泛型</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Gson gson = <span class="keyword">new</span> Gson();</div><div class="line">String jsonArray = <span class="string">"[\"Android\",\"Java\",\"PHP\"]"</span>;</div><div class="line">List&lt;String&gt; stringList = gson.fromJson(jsonArray, <span class="keyword">new</span> TypeToken&lt;List&lt;String&gt;&gt;() &#123;&#125;.getType());</div></pre></td></tr></table></figure>
+<h3 id="使用泛型减少创建bean"><a href="#使用泛型减少创建bean" class="headerlink" title="使用泛型减少创建bean"></a>使用泛型减少创建bean</h3><ol>
+<li>固定数据，加<code>bean</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> code;</div><div class="line">    <span class="keyword">public</span> String message;</div><div class="line">    <span class="keyword">public</span> T data;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>使用泛型，获取<code>bean</code>或<code>List&lt;bean&gt;</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Type userType = <span class="keyword">new</span> TypeToken&lt;Result&lt;User&gt;&gt;()&#123;&#125;.getType();</div><div class="line">Result&lt;User&gt; userResult = gson.fromJson(json,userType);</div><div class="line">User user = userResult.data;</div><div class="line"></div><div class="line">Type userListType = <span class="keyword">new</span> TypeToken&lt;Result&lt;List&lt;User&gt;&gt;&gt;()&#123;&#125;.getType();</div><div class="line">Result&lt;List&lt;User&gt;&gt; userListResult = gson.fromJson(json,userListType);</div><div class="line">List&lt;User&gt; users = userListResult.data;</div></pre></td></tr></table></figure>
+<h3 id="手动解析"><a href="#手动解析" class="headerlink" title="手动解析"></a>手动解析</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">String json = <span class="string">"&#123;\"name\":\"怪盗kidou\",\"age\":\"24\"&#125;"</span>;</div><div class="line">User user = <span class="keyword">new</span> User();</div><div class="line">JsonReader reader = <span class="keyword">new</span> JsonReader(<span class="keyword">new</span> StringReader(json));</div><div class="line">reader.beginObject(); <span class="comment">// throws IOException</span></div><div class="line"><span class="keyword">while</span> (reader.hasNext()) &#123;</div><div class="line">    String s = reader.nextName();</div><div class="line">    <span class="keyword">switch</span> (s) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"name"</span>:</div><div class="line">            user.name = reader.nextString();</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"age"</span>:</div><div class="line">            user.age = reader.nextInt(); <span class="comment">//自动转换</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"email"</span>:</div><div class="line">            user.email = reader.nextString();</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">reader.endObject(); <span class="comment">// throws IOException</span></div></pre></td></tr></table></figure>
+<h3 id="手动格式化"><a href="#手动格式化" class="headerlink" title="手动格式化"></a>手动格式化</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">JsonWriter writer = <span class="keyword">new</span> JsonWriter(<span class="keyword">new</span> OutputStreamWriter(System.out));</div><div class="line">writer.beginObject() <span class="comment">// throws IOException</span></div><div class="line">        .name(<span class="string">"name"</span>).value(<span class="string">"怪盗kidou"</span>)</div><div class="line">        .name(<span class="string">"age"</span>).value(<span class="number">24</span>)</div><div class="line">        .name(<span class="string">"email"</span>).nullValue() <span class="comment">//演示null</span></div><div class="line">        .endObject(); <span class="comment">// throws IOException</span></div><div class="line">writer.flush(); <span class="comment">// throws IOException</span></div><div class="line"><span class="comment">//&#123;"name":"怪盗kidou","age":24,"email":null&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Gson gson = <span class="keyword">new</span> GsonBuilder()</div><div class="line">		<span class="comment">//序列化null，默认null也导出</span></div><div class="line">        .serializeNulls()</div><div class="line">        <span class="comment">// 设置日期时间格式，另有2个重载方法</span></div><div class="line">        <span class="comment">// 在序列化和反序化时均生效</span></div><div class="line">        .setDateFormat(<span class="string">"yyyy-MM-dd"</span>)</div><div class="line">        <span class="comment">// 禁此序列化内部类</span></div><div class="line">        .disableInnerClassSerialization()</div><div class="line">        <span class="comment">//生成不可执行的Json（多了 )]&#125;' 这4个字符）</span></div><div class="line">        .generateNonExecutableJson()</div><div class="line">        <span class="comment">//禁止转义html标签</span></div><div class="line">        .disableHtmlEscaping()</div><div class="line">        <span class="comment">//格式化输出</span></div><div class="line">        .setPrettyPrinting()</div><div class="line">        .create();</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -450,7 +446,7 @@
           
             <a href="/tags/android/" rel="tag"># android</a>
           
-            <a href="/tags/dialog/" rel="tag"># dialog</a>
+            <a href="/tags/json/" rel="tag"># json</a>
           
         </div>
       
@@ -463,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/14/AlertDialog/" rel="next" title="AlertDialog">
-                <i class="fa fa-chevron-left"></i> AlertDialog
+              <a href="/2017/10/12/SimpleShape/" rel="next" title="简单自定义View让圆角和边框更方便">
+                <i class="fa fa-chevron-left"></i> 简单自定义View让圆角和边框更方便
               </a>
             
           </div>
@@ -472,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/25/gradle/" rel="prev" title="gradle">
-                gradle <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -631,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进度条"><span class="nav-number">2.</span> <span class="nav-text">进度条</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样式"><span class="nav-number">2.1.</span> <span class="nav-text">样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平进度条"><span class="nav-number">2.2.</span> <span class="nav-text">水平进度条</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性重命名"><span class="nav-number">1.</span> <span class="nav-text">属性重命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多命名属性取值"><span class="nav-number">2.</span> <span class="nav-text">多命名属性取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析数组"><span class="nav-number">3.</span> <span class="nav-text">解析数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用泛型减少创建bean"><span class="nav-number">4.</span> <span class="nav-text">使用泛型减少创建bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动解析"><span class="nav-number">5.</span> <span class="nav-text">手动解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动格式化"><span class="nav-number">6.</span> <span class="nav-text">手动格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义配置"><span class="nav-number">7.</span> <span class="nav-text">自定义配置</span></a></li></ol></div>
             
 
           </div>
@@ -768,9 +760,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/14/ProgressDialog/';
-          this.page.identifier = '2017/08/14/ProgressDialog/';
-          this.page.title = 'ProgressDialog';
+          this.page.url = 'http://yoursite.com/2017/10/13/Gson/';
+          this.page.identifier = '2017/10/13/Gson/';
+          this.page.title = 'Gson';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://songsong.disqus.com/embed.js';
