@@ -1,0 +1,828 @@
+<!doctype html>
+
+
+
+  
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android,glide,图片," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="引入1234567891011121314151617181. 导入repositories &amp;#123;  mavenCentral()&amp;#125;dependencies &amp;#123;    compile &apos;com.github.bumptech.glide:glide:4.0.0&apos;    annotationProcessor &apos;com.github.bumptech.glide:comp">
+<meta name="keywords" content="android,glide,图片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Glide4.0使用">
+<meta property="og:url" content="http://yoursite.com/2017/10/20/Glide4/index.html">
+<meta property="og:site_name" content="二松同学">
+<meta property="og:description" content="引入1234567891011121314151617181. 导入repositories &amp;#123;  mavenCentral()&amp;#125;dependencies &amp;#123;    compile &apos;com.github.bumptech.glide:glide:4.0.0&apos;    annotationProcessor &apos;com.github.bumptech.glide:comp">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-20T01:21:19.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Glide4.0使用">
+<meta name="twitter:description" content="引入1234567891011121314151617181. 导入repositories &amp;#123;  mavenCentral()&amp;#125;dependencies &amp;#123;    compile &apos;com.github.bumptech.glide:glide:4.0.0&apos;    annotationProcessor &apos;com.github.bumptech.glide:comp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/20/Glide4/"/>
+
+
+
+
+
+  <title> Glide4.0使用 | 二松同学 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2ee320cd924422c87693d8d6234f7b92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">二松同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">拥有梦想只是一种智力，实现梦想才是一种能力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/20/Glide4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二松同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Glide4.0使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T09:19:30+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/20/Glide4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/20/Glide4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 导入</div><div class="line">repositories &#123;</div><div class="line">  mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    compile <span class="string">'com.github.bumptech.glide:glide:4.0.0'</span></div><div class="line">    annotationProcessor <span class="string">'com.github.bumptech.glide:compiler:4.0.0'</span></div><div class="line">    compile <span class="string">'com.android.support:support-v4:25.3.1'</span></div><div class="line">&#125;</div><div class="line"><span class="number">2.</span> 混淆</div><div class="line">如果你有使用到 proguard，那么请把以下代码添加到你的 proguard.cfg 文件中：</div><div class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> * <span class="keyword">implements</span> <span class="title">com</span>.<span class="title">bumptech</span>.<span class="title">glide</span>.<span class="title">module</span>.<span class="title">GlideModule</span></span></div><div class="line"><span class="class">-<span class="title">keep</span> <span class="title">public</span> <span class="title">class</span> * <span class="keyword">extends</span> <span class="title">com</span>.<span class="title">bumptech</span>.<span class="title">glide</span>.<span class="title">AppGlideModule</span></span></div><div class="line"><span class="class">-<span class="title">keep</span> <span class="title">public</span> <span class="title">enum</span> <span class="title">com</span>.<span class="title">bumptech</span>.<span class="title">glide</span>.<span class="title">load</span>.<span class="title">resource</span>.<span class="title">bitmap</span>.<span class="title">ImageHeaderParser</span>$** &#123;</span></div><div class="line">    **[] $VALUES;</div><div class="line">    <span class="keyword">public</span> *;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>加载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(fragment).load(myUrl).into(imageView);</div></pre></td></tr></table></figure>
+<p>取消加载</p>
+<blockquote>
+<p>已经和context的生命周期关联,一般不用调用此方法</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Glide.with(fragment).clear(imageView);</div></pre></td></tr></table></figure>
+<h3 id="RecyecleView"><a href="#RecyecleView" class="headerlink" title="RecyecleView"></a>RecyecleView</h3><blockquote>
+<p>glide会自己判断网址为空的情况(为空清空内容或显示默认图),要注意imageView的复用</p>
+<p>复用问题:对 <code>View</code> 调用 <a href="https://muyangmin.github.io/glide-docs-cn/javadocs/400/com/bumptech/glide/RequestManager.html#clear-com.bumptech.glide.request.target.Target-" target="_blank" rel="external"><code>clear()</code></a> 或 <code>into(View)</code>，表明在此之前的加载操作会被取消</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">	Glide.with(fragment).clear(holder.imageView);</div><div class="line">	String url = urls.get(position);</div><div class="line">	Glide.with(fragment)</div><div class="line">	 	 .load(url)</div><div class="line">	 	 .into(holder.imageView);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>GlideApp</p>
+<blockquote>
+<p>此类可生成出一个流式 API，内联了多种选项，和集成库中自定义的选项</p>
+<p>目前仅可以在 Application 模块内使用(在app模块)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GlideModule</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAppGlideModule</span> <span class="keyword">extends</span> <span class="title">AppGlideModule</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">applyOptions</span><span class="params">(Context context, GlideBuilder builder)</span> </span>&#123;</div><div class="line">        <span class="comment">//内存</span></div><div class="line">        <span class="keyword">int</span> memoryCacheSizeBytes = <span class="number">1024</span> * <span class="number">1024</span> * <span class="number">20</span>; <span class="comment">// 20mb</span></div><div class="line">        builder.setMemoryCache(<span class="keyword">new</span> LruResourceCache(memoryCacheSizeBytes));</div><div class="line"></div><div class="line">        <span class="comment">//磁盘</span></div><div class="line">        <span class="keyword">int</span> diskCacheSizeBytes = <span class="number">1024</span> * <span class="number">1024</span> * <span class="number">100</span>; <span class="comment">// 100 MB</span></div><div class="line">        builder.setDiskCache(<span class="keyword">new</span> DiskLruCacheFactory(<span class="string">"cachePic"</span>, diskCacheSizeBytes));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="定义扩展"><a href="#定义扩展" class="headerlink" title="定义扩展"></a>定义扩展</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GlideExtension</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAppExtension</span> </span>&#123;</div><div class="line">    <span class="comment">// Size of mini thumb in pixels.</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MINI_THUMB_SIZE = <span class="number">200</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MyAppExtension</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125; <span class="comment">// utility class</span></div><div class="line"></div><div class="line">    <span class="meta">@GlideOption</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">miniThumb</span><span class="params">(RequestOptions options)</span> </span>&#123;</div><div class="line">        options.fitCenter()</div><div class="line">                .override(MINI_THUMB_SIZE);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="占位图片"><a href="#占位图片" class="headerlink" title="占位图片"></a>占位图片</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">GlideApp.with(<span class="keyword">this</span>)</div><div class="line">  			   .load(url)</div><div class="line">                .placeholder(<span class="keyword">new</span> ColorDrawable(Color.BLACK))<span class="comment">//占位</span></div><div class="line">                .error(<span class="keyword">new</span> ColorDrawable(Color.RED))<span class="comment">//失败</span></div><div class="line">                .fallback(<span class="keyword">new</span> ColorDrawable(Color.GRAY))<span class="comment">//地址为null</span></div><div class="line">                .into(iv);</div></pre></td></tr></table></figure>
+<h3 id="剪裁"><a href="#剪裁" class="headerlink" title="剪裁"></a>剪裁</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> GlideApp.with(<span class="keyword">this</span>)</div><div class="line">                .load(url)</div><div class="line">                .circleCrop()<span class="comment">//圆形</span></div><div class="line">                .centerInside()<span class="comment">//缩放到两边都小于等于宽或高,不拉伸居中</span></div><div class="line">                .fitCenter()<span class="comment">//缩放到两边都小于等于宽或高拉伸居中</span></div><div class="line">   			    .centerCrop()<span class="comment">//缩放到两边都大于等于宽或高居中剪裁</span></div><div class="line">                .into(iv1);</div><div class="line"><span class="comment">//自定义option,配置剪裁</span></div><div class="line">GlideOptions options = <span class="keyword">new</span> GlideOptions();</div><div class="line">options.circleCrop();</div><div class="line">GlideApp.apply(options)</div><div class="line"><span class="comment">//glide自带的option</span></div><div class="line">GlideApp.apply(RequestOptions.centerCropTransform())</div></pre></td></tr></table></figure>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><blockquote>
+<p><code>BitmapTransitionOptions</code>   <code>DrawableTransitionOptions</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GlideApp.transition(withCrossFade(<span class="number">1000</span>))</div><div class="line">  		   .dontTransform()<span class="comment">//关闭动画</span></div></pre></td></tr></table></figure>
+<h3 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h3><blockquote>
+<p>如果返回true,glide将不再操作.例如:失败不展示失败占位图</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">GlideApp.listener(<span class="keyword">new</span> RequestListener&lt;Drawable&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onLoadFailed</span><span class="params">(@Nullable GlideException e, Object model, Target&lt;Drawable&gt; target, <span class="keyword">boolean</span> isFirstResource)</span> </span>&#123;</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onResourceReady</span><span class="params">(Drawable resource, Object model, Target&lt;Drawable&gt; target, DataSource dataSource, <span class="keyword">boolean</span> isFirstResource)</span> </span>&#123;</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div></pre></td></tr></table></figure>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">IMMEDIATE 立即,不管优先级</span></div><div class="line"><span class="comment">HIGH</span></div><div class="line"><span class="comment">NORMAL</span></div><div class="line"><span class="comment">LOW</span></div><div class="line"><span class="comment">*/</span></div><div class="line">GlideApp.priority(IMMEDIATE)</div></pre></td></tr></table></figure>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">  GlideApp.diskCacheStrategy(DiskCacheStrategy.ALL)<span class="comment">//磁盘缓存模式</span></div><div class="line">                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)</div><div class="line">                .diskCacheStrategy(DiskCacheStrategy.NONE)</div><div class="line">                .onlyRetrieveFromCache(<span class="keyword">true</span>)<span class="comment">//只使用缓存</span></div><div class="line">                .skipMemoryCache(<span class="keyword">true</span>)<span class="comment">//跳过内存</span></div><div class="line">            <span class="comment">// This method must be called on the main thread.</span></div><div class="line">        Glide.get(<span class="keyword">this</span>).clearDiskCache();</div><div class="line">        <span class="comment">//不推荐</span></div><div class="line">        Glide.get(<span class="keyword">this</span>).clearMemory();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//暂时允许Glide在应用的某些部分使用更多或更少的内</span></div><div class="line">Glide.get(<span class="keyword">this</span>).setMemoryCategory(MemoryCategory.LOW);</div><div class="line"><span class="comment">// Or:</span></div><div class="line">Glide.get(<span class="keyword">this</span>).setMemoryCategory(MemoryCategory.HIGH);</div><div class="line"></div><div class="line"></div><div class="line"> <span class="comment">// This method must be called on the main thread.</span></div><div class="line">Glide.get(<span class="keyword">this</span>).clearDiskCache();</div><div class="line"><span class="comment">//不推荐</span></div><div class="line">Glide.get(<span class="keyword">this</span>).clearMemory();</div></pre></td></tr></table></figure>
+<h3 id="加载类型"><a href="#加载类型" class="headerlink" title="加载类型"></a>加载类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GlideApp.with(<span class="keyword">this</span>).asFile();</div><div class="line">GlideApp.with(<span class="keyword">this</span>).asBitmap();</div><div class="line">GlideApp.with(<span class="keyword">this</span>).asDrawable();</div><div class="line">GlideApp.with(<span class="keyword">this</span>).asGif();</div></pre></td></tr></table></figure>
+<h3 id="配合okhttp"><a href="#配合okhttp" class="headerlink" title="配合okhttp"></a>配合okhttp</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--Manifest--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></div><div class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">"GlideModule"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h3><blockquote>
+<p>同一个url的问题</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GlideApp.signature(<span class="keyword">new</span> StringSignature(String.valueOf(System.currentTimeMillis())))</div></pre></td></tr></table></figure>
+<h3 id="下载图片缓存图片"><a href="#下载图片缓存图片" class="headerlink" title="下载图片缓存图片"></a>下载图片缓存图片</h3><blockquote>
+<p>获取bitmap，可以对原图进行裁剪和大小指定操作(用于微信分享获取小图)</p>
+<p>记得在子线程中执行 InterruptedException ExecutionException 阻塞线程</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">            Bitmap bitmap = GlideApp.with(<span class="keyword">this</span>)</div><div class="line">                    .asBitmap()</div><div class="line">                    .load(<span class="string">"url"</span>)</div><div class="line">                    .centerCrop()</div><div class="line">                    .submit(<span class="number">100</span>, <span class="number">100</span>)<span class="comment">//size</span></div><div class="line">                    .get();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>缓存图片获得文件对象</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">FutureTarget&lt;File&gt; future = GlideApp.with(<span class="keyword">this</span>)</div><div class="line">                .load(<span class="string">"url"</span>)</div><div class="line">                .downloadOnly(<span class="number">100</span>, <span class="number">100</span>);<span class="comment">//size 已经废弃不推荐使用</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            File file = future.get();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">或</div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">            File file = GlideApp.with(<span class="keyword">this</span>)</div><div class="line">                    .asFile()</div><div class="line">                    .load(<span class="string">"url"</span>)</div><div class="line">                    .centerCrop()</div><div class="line">                    .submit(<span class="number">100</span>, <span class="number">100</span>)</div><div class="line">                    .get();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>通知图库更新</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">context.sendBroadcast(<span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,  </div><div class="line">                Uri.fromFile(<span class="keyword">new</span> File(currentFile.getPath()))));</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/glide/" rel="tag"># glide</a>
+          
+            <a href="/tags/图片/" rel="tag"># 图片</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/13/Gson/" rel="next" title="Gson">
+                <i class="fa fa-chevron-left"></i> Gson
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="songsong" />
+          <p class="site-author-name" itemprop="name">songsong</p>
+           
+              <p class="site-description motion-element" itemprop="description">good good study day day up.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/songsongtao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/573aef0479bc44005c6cfd2b" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入"><span class="nav-number">1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门"><span class="nav-number">2.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">2.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RecyecleView"><span class="nav-number">2.2.</span> <span class="nav-text">RecyecleView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义扩展"><span class="nav-number">2.3.</span> <span class="nav-text">定义扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#占位图片"><span class="nav-number">2.4.</span> <span class="nav-text">占位图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪裁"><span class="nav-number">2.5.</span> <span class="nav-text">剪裁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">2.6.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听"><span class="nav-number">2.7.</span> <span class="nav-text">监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优先级"><span class="nav-number">2.8.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">2.9.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载类型"><span class="nav-number">2.10.</span> <span class="nav-text">加载类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合okhttp"><span class="nav-number">2.11.</span> <span class="nav-text">配合okhttp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记"><span class="nav-number">2.12.</span> <span class="nav-text">标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载图片缓存图片"><span class="nav-number">2.13.</span> <span class="nav-text">下载图片缓存图片</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songsong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://songsong.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/10/20/Glide4/';
+          this.page.identifier = '2017/10/20/Glide4/';
+          this.page.title = 'Glide4.0使用';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://songsong.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
