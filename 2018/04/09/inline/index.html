@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="二松同学">
 <meta property="og:description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 我个人认为其实就是把">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T03:23:59.930Z">
+<meta property="og:updated_time" content="2018-04-09T03:28:47.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kotlin中的内联函数笔记">
 <meta name="twitter:description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 我个人认为其实就是把">
@@ -393,7 +393,7 @@
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在使用内联函数之前需要了解<code>kotlin</code>中的泛型（与<code>java</code>类似）</p>
 <p><code>lambda</code>表达式  <code>(Int) -&gt; Unit</code>输入是Int类型返回结果是空</p>
 <p>我一开始也是一头雾水，现在算是一知半解</p>
-<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><ul>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><ul>
 <li>源码</li>
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Calls the specified function [block] with `this` value as its argument and returns its result.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">@kotlin</span>.<span class="keyword">internal</span>.InlineOnly</div><div class="line"><span class="keyword">public</span> <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T, R&gt;</span> T.<span class="title">let</span><span class="params">(block: (<span class="type">T</span>)</span></span> -&gt; R): R &#123;</div><div class="line">    contract &#123;</div><div class="line">        callsInPlace(block, InvocationKind.EXACTLY_ONCE)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> block(<span class="keyword">this</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -633,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let"><span class="nav-number">2.</span> <span class="nav-text">let</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#repeat"><span class="nav-number">2.1.</span> <span class="nav-text">repeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#with"><span class="nav-number">2.2.</span> <span class="nav-text">with</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run"><span class="nav-number">2.3.</span> <span class="nav-text">run</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.1.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeat"><span class="nav-number">1.2.</span> <span class="nav-text">repeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#with"><span class="nav-number">1.3.</span> <span class="nav-text">with</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run"><span class="nav-number">1.4.</span> <span class="nav-text">run</span></a></li></ol></li></ol></div>
             
 
           </div>
