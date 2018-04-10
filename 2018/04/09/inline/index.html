@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 我个人认为其实就是把">
+<meta name="description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 使用高阶函数会带来一">
 <meta name="keywords" content="android,json">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kotlin中的内联函数笔记">
 <meta property="og:url" content="http://yoursite.com/2018/04/09/inline/index.html">
 <meta property="og:site_name" content="二松同学">
-<meta property="og:description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 我个人认为其实就是把">
+<meta property="og:description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 使用高阶函数会带来一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T08:03:51.920Z">
+<meta property="og:updated_time" content="2018-04-10T08:25:56.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kotlin中的内联函数笔记">
-<meta name="twitter:description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 我个人认为其实就是把">
+<meta name="twitter:description" content="内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从源代码层看，有函数的结构，而在编译后，却不具备函数的性质。 内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用函数体替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看编译器对该函数定义的具体处理。—— 百度百科 使用高阶函数会带来一">
 
 
 
@@ -388,7 +388,7 @@
         <blockquote>
 <p>内联函数是指用inline关键字修饰的函数。在类内定义的函数被默认成内联函数。内联函数从<a href="https://baike.baidu.com/item/%E6%BA%90%E4%BB%A3%E7%A0%81" target="_blank" rel="external">源代码</a>层看，有函数的结构，而在编译后，却不具备函数的性质。</p>
 <p>内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。编译时，类似宏替换，使用<a href="https://baike.baidu.com/item/%E5%87%BD%E6%95%B0%E4%BD%93" target="_blank" rel="external">函数体</a>替换调用处的函数名。一般在代码中用inline修饰，但是能否形成内联函数，需要看<a href="https://baike.baidu.com/item/%E7%BC%96%E8%AF%91%E5%99%A8" target="_blank" rel="external">编译器</a>对该函数定义的具体处理。—— 百度百科</p>
-<p>我个人认为其实就是把函数中的函数体提出来直接执行，减少了方法的进栈和出栈</p>
+<p>使用<a href="https://www.kotlincn.net/docs/reference/lambdas.html" target="_blank" rel="external">高阶函数</a>会带来一些运行时的效率损失：每一个函数都是一个对象，并且会捕获一个闭包。 即那些在函数体内会访问到的变量。 内存分配（对于函数对象和类）和虚拟调用会引入运行时间开销。</p>
 </blockquote>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在使用内联函数之前需要了解<code>kotlin</code>中的泛型（与<code>java</code>类似）</p>
 <p><code>lambda</code>表达式  <code>(Int) -&gt; Unit</code>输入是Int类型返回结果是空</p>
